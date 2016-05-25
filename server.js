@@ -17,7 +17,15 @@
          }
      });
 
-        var Departamento = sequelize.define('departamento',{
+        var Usuario = sequelize.define('usuario',{
+            idUsuario: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+            nombre: { type: Sequelize.STRING, allowNull: false },
+            correo: { type: Sequelize.STRING, allowNull: false },
+            nick: { type: Sequelize.STRING, allowNull: false },
+            contraseña: { type: Sequelize.STRING, allowNull: false },
+    });
+
+    var Departamento = sequelize.define('departamento',{
             idDepartamento: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
             nombre: { type: Sequelize.STRING, allowNull: false },
             direccion: { type: Sequelize.STRING, allowNull: false }
@@ -45,6 +53,7 @@
         app.use(morgan('dev'));
         app.set('departamento', Departamento);
         app.set('lugarturistico', LugarTuristico);
+        app.set('usuario', Usuario);
         app.listen(puerto,function () {
            console.log("Servidor iniciado en el puerto: " + puerto);
         });
