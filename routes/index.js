@@ -23,6 +23,10 @@ module.exports=(function(app){
 
     ruta.get('/usuario', usuarios.list);
     ruta.post('/usuario', usuarios.add);
+    ruta.get('/token', usuarios.tokenGenerator);
+    ruta.use(usuarios.tokenMiddleware);
+    ruta.get('prueba', usuarios.prueba);
+
 
     return ruta;
 });

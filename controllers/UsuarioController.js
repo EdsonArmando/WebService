@@ -4,6 +4,12 @@
 var jwt=require('jsonwebtoken');
 module.exports = function (app) {
     return{
+        prueba:function(req,res){
+            var Usuario = app.get('usuario');
+            Usuario.findAll().then(function(data){
+                res.json(data);
+            });
+        },
         tokenGenerator:function(req,res){
             var token=jwt.sign({company:'Kinal'},'S3CUR3@APP');
             res.send(token);
