@@ -11,5 +11,10 @@ module.exports=(function(app){
     ruta.delete('/departamento', departamento.delete);
     ruta.get('/departamento/:id', departamento.DepConLugares);
 
+   var lugarturistico = require('../controllers/LugarTuristicoController')(app);
+
+    ruta.get('/lugarturistico', lugarturistico.list);
+    ruta.post('/lugarturistico', lugarturistico.add);
+
     return ruta;
 });

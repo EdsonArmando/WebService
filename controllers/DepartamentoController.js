@@ -3,11 +3,11 @@
  */
 module.exports = function (app) {
     return{
-        add: function (req, res) {
+        add:function (req, res) {
             var Departamento = app.get('departamento');
             Departamento.create({
                 nombre: req.body.nombre,
-                descripcion: req.body.descripcion
+                direccion: req.body.direccion
             }).then(function (departamento) {
                 res.json(departamento);
             });
@@ -24,7 +24,7 @@ module.exports = function (app) {
                 if(departamento){
                     departamento.updateAttributes({
                         nombre: req.body.nombre,
-                        descripcion: req.body.descripcion
+                        direccion: req.body.direccion
                     }).then(function (departamento) {
                         res.json(departamento);
                     });

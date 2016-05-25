@@ -32,8 +32,8 @@
         Departamento.hasMany(LugarTuristico, { foreignKey: 'idDepartamento', constraints: true});
         LugarTuristico.belongsTo(Departamento, {foreignKey: 'idDepartamento', constraints: true});
 
-        sequelize.sync({ force:true});
-        var puerto=3000;
+        sequelize.sync({ force:false});
+        var puerto=4000;
         var conf=require('./config');
         var app=express();
         app.use(bodyParser.urlencoded({
@@ -46,6 +46,6 @@
         app.set('departamento', Departamento);
         app.set('lugarturistico', LugarTuristico);
         app.listen(puerto,function () {
-           console.log("Servidor iniciado: " + puerto);
+           console.log("Servidor iniciado en el puerto: " + puerto);
         });
     })();
